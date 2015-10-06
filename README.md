@@ -9,4 +9,4 @@ IBCalculator is an example app to demonstrate how to use `@IBDesignable` and `@I
 ![IBCalculator](https://raw.githubusercontent.com/JakeLin/IBCalculator/master/screenshots/IBCalculator.png)
 
 ### Run in iPhone Simulator
-![IBCalculator](https://raw.githubusercontent.com/JakeLin/IBCalculator/master/screenshots/IBCalculator-iPhone.png)
+![IBCalculator](https://raw.githubusercontent.com/JakeLin/IBCalculator/master/screenshots/IBCalcalator-iPhone.png)
