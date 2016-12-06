@@ -11,28 +11,28 @@ import UIKit
 
 extension String {
   /// Draw the `String` inside the bounding rectangle with a given alignment.
-  func drawAtPointInRect(rect: CGRect, withAttributes attributes: [String: AnyObject]?, andAlignment alignment: NCStringAlignment) {
-    let size = self.sizeWithAttributes(attributes)
+  func drawAtPointInRect(_ rect: CGRect, withAttributes attributes: [String: AnyObject]?, andAlignment alignment: NCStringAlignment) {
+    let size = self.size(attributes: attributes)
     var x, y: CGFloat
     
     switch alignment {
-    case .LeftTop, .LeftCenter, .LeftBottom:
-      x = CGRectGetMinX(rect)
-    case .CenterTop, .Center, .CenterBottom:
-      x = CGRectGetMidX(rect) - size.width / 2
-    case .RightTop, .RightCenter, .RightBottom:
-      x = CGRectGetMaxX(rect) - size.width
+    case .leftTop, .leftCenter, .leftBottom:
+      x = rect.minX
+    case .centerTop, .center, .centerBottom:
+      x = rect.midX - size.width / 2
+    case .rightTop, .rightCenter, .rightBottom:
+      x = rect.maxX - size.width
     }
     
     switch alignment {
-    case .LeftTop, .CenterTop, .RightTop:
-      y = CGRectGetMinY(rect)
-    case .LeftCenter, .Center, .RightCenter:
-      y = CGRectGetMidY(rect) - size.height / 2
-    case .LeftBottom, .CenterBottom, .RightBottom:
-      y = CGRectGetMaxY(rect) - size.height
+    case .leftTop, .centerTop, .rightTop:
+      y = rect.minY
+    case .leftCenter, .center, .rightCenter:
+      y = rect.midY - size.height / 2
+    case .leftBottom, .centerBottom, .rightBottom:
+      y = rect.maxY - size.height
     }
     
-    self.drawAtPoint(CGPoint(x: x, y: y), withAttributes: attributes)
+    self.draw(at: CGPoint(x: x, y: y), withAttributes: attributes)
   }
 }

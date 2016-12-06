@@ -24,14 +24,14 @@ class CalculatorView: UIView {
   
   @IBInspectable var faceColor: UIColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 1)
   
-  @IBInspectable var textColor: UIColor = UIColor.blackColor()
+  @IBInspectable var textColor: UIColor = UIColor.black
   @IBInspectable var textSize: CGFloat = 12
   
-  @IBInspectable var buttonColor: UIColor = UIColor.whiteColor()
-  @IBInspectable var edgeColor: UIColor = UIColor.blackColor()
+  @IBInspectable var buttonColor: UIColor = UIColor.white
+  @IBInspectable var edgeColor: UIColor = UIColor.black
   @IBInspectable var edgeWidth: CGFloat = 1
   
-  @IBInspectable var shadowColor: UIColor = UIColor.blackColor()
+  @IBInspectable var shadowColor: UIColor = UIColor.black
   @IBInspectable var shadowOffset: CGFloat = 2
   
   @IBInspectable var cornerRadius: CGFloat = 7
@@ -42,12 +42,12 @@ class CalculatorView: UIView {
   @IBInspectable var spacingY: CGFloat = 5
   
   @IBInspectable var titleHeight: CGFloat = 20
-  @IBInspectable var titleColor: UIColor = UIColor.whiteColor()
-  @IBInspectable var titleBarColor: UIColor = UIColor.blackColor()
+  @IBInspectable var titleColor: UIColor = UIColor.white
+  @IBInspectable var titleBarColor: UIColor = UIColor.black
   
   // MARK: - Drawing
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     
     // initial drawing setup
     
@@ -56,8 +56,8 @@ class CalculatorView: UIView {
     let unitWidth = (bounds.width - 2 * paddingX - (columns - 1) * spacingX) / columns
     
     // set up text attributes
-    let textFont = UIFont.systemFontOfSize(textSize)
-    let textAttributes = [NSFontAttributeName: textFont, NSForegroundColorAttributeName: textColor]
+    let textFont = UIFont.systemFont(ofSize: textSize)
+    let textAttributes = [NSFontAttributeName: textFont, NSForegroundColorAttributeName: textColor] as [String : AnyObject]
     
     // get the graphics context
     let context = UIGraphicsGetCurrentContext()
@@ -65,7 +65,7 @@ class CalculatorView: UIView {
     // helper functions
     
     // maps a point and size (in units) to an actual rect in the view's coordinates for drawing
-    func rectForPosition(position: CGPoint, andSize size: CGSize) -> CGRect {
+    func rectForPosition(_ position: CGPoint, andSize size: CGSize) -> CGRect {
       let x       = paddingX + unitWidth * position.x + spacingX * position.x
       let y       = titleHeight + paddingY + unitHeight * position.y + spacingY * position.y
       let width   = size.width * unitWidth + (size.width - 1) * spacingX
@@ -75,13 +75,13 @@ class CalculatorView: UIView {
     }
     
     // draw a button in the specified rect
-    func drawButtonInRect(rect: CGRect, withText text: String) {
+    func drawButtonInRect(_ rect: CGRect, withText text: String) {
       shadowColor.setFill()
       UIRectFill(rect.offsetBy(dx: shadowOffset, dy: shadowOffset))
       
       buttonColor.setFill()
       edgeColor.setStroke()
-      CGContextSetLineWidth(context, edgeWidth)
+      context?.setLineWidth(edgeWidth)
       UIRectFill(rect)
       UIRectFrame(rect)
       
@@ -93,22 +93,23 @@ class CalculatorView: UIView {
         textRect.origin.y = textRect.maxY - unitHeight
         textRect.size.height = unitHeight
       }
-      text.drawAtPointInRect(textRect, withAttributes: textAttributes, andAlignment: .Center)
+      text.drawAtPointInRect(textRect, withAttributes: textAttributes, andAlignment: .center)
     }
     
     // draw the display
-    func drawDisplayInRect(rect: CGRect, withText text: String) {
+    func drawDisplayInRect(_ rect: CGRect, withText text: String) {
       buttonColor.setFill()
       edgeColor.setStroke()
-      CGContextSetLineWidth(context, edgeWidth)
+      context?.setLineWidth(edgeWidth)
       UIRectFill(rect)
       UIRectFrame(rect)
       
-      text.drawAtPointInRect(rect.offsetBy(dx: unitWidth / -3, dy: 0), withAttributes: textAttributes, andAlignment: .RightCenter)
+      text.drawAtPointInRect(rect.offsetBy(dx: unitWidth / -3, dy: 0), withAttributes: textAttributes, andAlignment: .rightCenter)
     }
     
     /// Convert a rect to a pixel-aligned version, rounding position and size
-    func pixelAlignedRect(var rect: CGRect) -> CGRect {
+    func pixelAlignedRect(_ rect: CGRect) -> CGRect {
+      var rect = rect
       rect.origin.x = round(rect.origin.x)
       rect.origin.y = round(rect.origin.y)
       rect.size.width = round(rect.size.width)
@@ -124,9 +125,9 @@ class CalculatorView: UIView {
     
     // center the title in the title bar
     let title = "Calculator"
-    let (titleRect, _) = bounds.divide(titleHeight, fromEdge: CGRectEdge.MinYEdge)
-    let titleAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(textSize + 2), NSForegroundColorAttributeName: titleColor]
-    title.drawAtPointInRect(titleRect, withAttributes: titleAttributes, andAlignment: .Center)
+    let (titleRect, _) = bounds.divided(atDistance: titleHeight, from: CGRectEdge.minYEdge)
+    let titleAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: textSize + 2), NSForegroundColorAttributeName: titleColor] as [String : AnyObject]
+    title.drawAtPointInRect(titleRect, withAttributes: titleAttributes, andAlignment: .center)
     
     // calculator "face" - covers most of the window
     let face = UIBezierPath(roundedRect: bounds.insetBy(dx: 0, dy: titleHeight / 2).offsetBy(dx: 0, dy: titleHeight / 2), cornerRadius: cornerRadius)
@@ -138,8 +139,8 @@ class CalculatorView: UIView {
     drawDisplayInRect(displayRect, withText: "3")
     
     // draw basic buttons
-    for (rowNumber, row) in buttonRows.enumerate() {
-      for (columnNumber, text) in row.enumerate() {
+    for (rowNumber, row) in buttonRows.enumerated() {
+      for (columnNumber, text) in row.enumerated() {
         drawButtonInRect(rectForPosition(CGPoint(x: columnNumber, y: rowNumber + 1), andSize: CGSize(width: 1, height: 1)), withText: text)
       }
     }

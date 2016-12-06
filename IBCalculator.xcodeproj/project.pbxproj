@@ -12,9 +12,9 @@
 		AE9A8D311BC2A56E00B23E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE9A8D2F1BC2A56E00B23E2D /* Main.storyboard */; };
 		AE9A8D331BC2A56E00B23E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9A8D321BC2A56E00B23E2D /* Assets.xcassets */; };
 		AE9A8D361BC2A56E00B23E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE9A8D341BC2A56E00B23E2D /* LaunchScreen.storyboard */; };
-		AE9A8D3E1BC2A7CC00B23E2D /* String+IBCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D3D1BC2A7CC00B23E2D /* String+IBCalculator.swift */; settings = {ASSET_TAGS = (); }; };
-		AE9A8D401BC2A82300B23E2D /* NCStringAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D3F1BC2A82300B23E2D /* NCStringAlignment.swift */; settings = {ASSET_TAGS = (); }; };
-		AE9A8D421BC2A8F100B23E2D /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D411BC2A8F100B23E2D /* CalculatorView.swift */; settings = {ASSET_TAGS = (); }; };
+		AE9A8D3E1BC2A7CC00B23E2D /* String+IBCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D3D1BC2A7CC00B23E2D /* String+IBCalculator.swift */; };
+		AE9A8D401BC2A82300B23E2D /* NCStringAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D3F1BC2A82300B23E2D /* NCStringAlignment.swift */; };
+		AE9A8D421BC2A8F100B23E2D /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9A8D411BC2A8F100B23E2D /* CalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,11 +99,12 @@
 		AE9A8D201BC2A56E00B23E2D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Jake Lin";
 				TargetAttributes = {
 					AE9A8D271BC2A56E00B23E2D = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -186,8 +187,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -231,8 +234,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -251,6 +256,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -264,6 +270,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JakeLin.IBCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -275,6 +282,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JakeLin.IBCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -297,6 +305,7 @@
 				AE9A8D3C1BC2A56E00B23E2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
