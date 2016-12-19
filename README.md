@@ -1,7 +1,7 @@
 IBCalculator
 ============
 
-IBCalculator is an example app to demonstrate how to use `@IBDesignable` and `@IBInspectable`. The origin code is from [IBInspectable / IBDesignable](http://nshipster.com/ibinspectable-ibdesignable/) and [gist](https://gist.github.com/natecook1000/4269059121ec247fbb90). The code has been upgraded to Swift 2.
+IBCalculator is an example app to demonstrate how to use `@IBDesignable` and `@IBInspectable`. The origin code is from [IBInspectable / IBDesignable](http://nshipster.com/ibinspectable-ibdesignable/) and [gist](https://gist.github.com/natecook1000/4269059121ec247fbb90). The code has been upgraded to Swift 3.
 
 ## Screenshots
 
